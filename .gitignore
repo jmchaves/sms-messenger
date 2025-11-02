@@ -1,0 +1,50 @@
+# =========================================
+# Global ignores for Docker + Rails + Angular
+# =========================================
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+
+# --- Environment files (never commit secrets) ---
+.env
+.env.*
+!*.example   # allow example env templates
+
+# --- Node / Angular (client) ---
+client/node_modules/
+client/dist/
+client/.angular/cache/
+client/.angular/
+
+# --- Rails (API) ---
+api/log/
+api/tmp/
+api/vendor/bundle/
+api/node_modules/
+api/storage/
+api/public/assets/
+api/.bundle/
+api/db/*.sqlite3
+api/db/*.sqlite3-journal
+
+# Rails master key (keep local only)
+api/config/master.key
+api/config/credentials.yml.enc
+
+# --- Docker ---
+# Mongo data persistence (local only)
+mongo/data/
+# Optional logs or cache
+**/tmp/
+**/log/
+
+# --- Editor/IDE ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- System files ---
+*.bak
+*.old

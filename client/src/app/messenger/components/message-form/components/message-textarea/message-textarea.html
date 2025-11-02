@@ -1,0 +1,29 @@
+<div>
+  <div class="flex items-center justify-between mb-2">
+    <label for="message" class="block text-sm font-semibold text-gray-700">
+      Your Message
+    </label>
+    <span class="text-xs font-medium px-2.5 py-1 rounded-full"
+          [class.bg-gray-100]="!isWarning() && !isMaxed()"
+          [class.text-gray-600]="!isWarning() && !isMaxed()"
+          [class.bg-amber-100]="isWarning()"
+          [class.text-amber-700]="isWarning()"
+          [class.bg-red-100]="isMaxed()"
+          [class.text-red-700]="isMaxed()">
+      {{ messageLength() }}/{{ maxChars() }}
+    </span>
+  </div>
+  <div class="relative">
+    <textarea
+      id="message"
+      [(ngModel)]="value"
+      name="message"
+      [rows]="rows()"
+      [maxlength]="maxChars()"
+      class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-900 focus:border-transparent resize-none transition-all duration-200 outline-none"
+      placeholder="Type your message here..."
+      required
+    ></textarea>
+  </div>
+</div>
+

@@ -1,0 +1,17 @@
+development:
+  clients:
+    default:
+      uri: <%= ENV['MONGO_URL'] %>/<%= ENV['MONGO_DB'] %>?authSource=admin
+  options: {}
+
+test:
+  clients:
+    default:
+      uri: <%= ENV['MONGO_URL'] %>/<%= ENV['MONGO_DB'] %>_test
+  options: {}
+
+production:
+  clients:
+    default:
+      uri: <%= ENV['MONGO_URL'] %>/<%= ENV['MONGO_DB'] %>
+  options: {}

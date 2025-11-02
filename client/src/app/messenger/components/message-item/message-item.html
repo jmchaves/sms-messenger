@@ -1,0 +1,59 @@
+<div class="group hover:bg-gray-50 rounded-xl p-4 transition-colors duration-200 -mx-4">
+  <div class="flex items-start gap-3">
+    <div class="flex-shrink-0 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+      <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+    </div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-center justify-between mb-2">
+        <div class="flex flex-col gap-1">
+          <div class="flex items-center gap-2">
+            <span class="font-semibold text-gray-900">{{ message().receiver_phone_number }}</span>
+            <span [class]="'px-2 py-1 rounded-full text-xs font-medium ' + getStatusBadgeClass(message().status)">
+              {{ message().status.replace('_', ' ') }}
+            </span>
+          </div>
+        </div>
+        <span class="text-xs text-gray-500 whitespace-nowrap ml-2">{{ formatDate(message().sent_at) }}</span>
+      </div>
+      <div class="bg-gray-100 rounded-lg p-3 border border-gray-200">
+        <p class="text-gray-800 text-sm leading-relaxed break-words">{{ message().text }}</p>
+      </div>
+      <div class="flex items-center justify-between mt-1 gap-2">
+        <div class="flex flex-col items-start gap-1">
+          @if (message().delivery_status) {
+            <div class="flex items-center gap-1">
+              <span [class]="'text-sm font-medium ' + getDeliveryStatusColor(message().delivery_status)">
+                {{ getDeliveryStatusIcon(message().delivery_status) }}
+              </span>
+              <span [class]="'text-xs ' + getDeliveryStatusColor(message().delivery_status)">
+                {{ getDeliveryStatusText(message().delivery_status) }}
+              </span>
+              @if (message().delivery_error_message) {
+                <span class="text-xs text-red-500" [title]="message().delivery_error_message">
+                  (Error)
+                </span>
+              }
+            </div>
+            @if (isDelivered(message().delivery_status)) {
+              <div class="flex items-center gap-2 text-xs text-green-700 bg-green-50 border border-green-100 rounded-md px-2 py-1">
+                <svg class="w-3.5 h-3.5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <div class="flex flex-col leading-tight">
+                  <span class="font-semibold">Delivered via Twilio</span>
+                  @if (formatDeliveredAt(message().delivered_at); as deliveredAt) {
+                    <span class="text-[11px] text-green-600/80">at {{ deliveredAt }}</span>
+                  }
+                </div>
+              </div>
+            }
+          }
+        </div>
+        <span class="text-xs text-gray-400">{{ message().text.length }} characters</span>
+      </div>
+    </div>
+  </div>
+</div>
+

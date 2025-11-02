@@ -1,0 +1,12 @@
+  client:
+    build: ./client
+    env_file:
+      - ./.env
+      - ./client/.env
+    command: ["npm", "run", "start", "--", "--host", "0.0.0.0"]
+    volumes:
+      - ./client:/usr/src/app
+    ports:
+      - "4200:4200"
+    depends_on:
+      - api

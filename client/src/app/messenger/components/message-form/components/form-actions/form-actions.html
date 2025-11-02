@@ -1,0 +1,23 @@
+<div class="flex flex-col-reverse sm:flex-row justify-between items-stretch sm:items-center gap-3 pt-2">
+  <button
+    type="button"
+    (click)="onClearClick()"
+    class="px-6 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-xl transition-all duration-200"
+  >
+    Clear Form
+  </button>
+  <button
+    type="submit"
+    [disabled]="disabled()"
+    (click)="onSubmitClick()"
+    class="px-8 py-3 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 active:scale-95 transition-all duration-200 shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-sm"
+  >
+    <span class="flex items-center justify-center gap-2">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+      </svg>
+      Send Message
+    </span>
+  </button>
+</div>
+

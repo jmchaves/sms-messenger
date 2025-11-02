@@ -1,0 +1,17 @@
+<div class="min-h-screen bg-gray-100">
+  <!-- Header -->
+  <app-messenger-header />
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+      
+      <!-- New Message Section -->
+      <app-message-form (submitMessage)="onMessageSubmit($event)" />
+
+      <!-- Message History Section -->
+      <app-message-history [messages]="messages()" />
+
+    </div>
+  </main>
+</div>

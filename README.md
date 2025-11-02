@@ -49,19 +49,15 @@ A full-stack SMS messaging application that allows users to send and receive SMS
 
 3. **Build and start the application**
    ```bash
-   docker-compose up --build
+   docker compose up --build
    ```
+> 💡 **Note**: Make sure you have the required permissions; otherwise, run sudo docker compose up --build
 
    This will start:
    - **API Server**: http://localhost:3000
    - **Angular Client**: http://localhost:4200
    - **MongoDB**: localhost:27017
    - **Mongo Express**: http://localhost:8081
-
-4. **Seed the database** (in a new terminal)
-   ```bash
-   docker-compose exec api bin/rails db:seed
-   ```
 
 ## 🎯 Usage
 

@@ -56,7 +56,6 @@ services:
     working_dir: /usr/src/app
     env_file:
       - ./.env
-      - ./client/.env
     volumes:
       - ./client:/usr/src/app
       - /usr/src/app/node_modules
